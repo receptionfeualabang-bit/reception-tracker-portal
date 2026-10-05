@@ -349,6 +349,52 @@ body.modal-open{overflow:hidden}
 .arcade-hero-art{transform:translateZ(20px);filter:drop-shadow(0 18px 24px rgba(0,86,59,.12))}
 @media (prefers-reduced-motion:reduce){.arcade-scene-bg,.arcade-scene-bg::after,.arcade-stage::before,.arcade-game-card .game-card-art img,.arcade-game-card,.arcade-stage canvas{animation:none!important;transition:none!important;transform:none!important}}
 
+
+/* v3 transparent interactive game-logo presentation */
+.game-logo-menu .game-launch-card{cursor:pointer;touch-action:manipulation}
+.game-logo-menu .game-logo-stage{inset:0 0 36% 0;background:transparent!important;padding:1rem 1.25rem .2rem;overflow:visible;pointer-events:none}
+.game-logo-menu .game-logo-stage::before{display:none!important}
+.game-logo-menu .game-logo-img{width:82%;height:82%;object-fit:contain;background:transparent!important;mix-blend-mode:normal;pointer-events:none;filter:drop-shadow(0 12px 8px rgba(0,0,0,.18)) drop-shadow(0 22px 22px rgba(0,0,0,.22));will-change:transform}
+.game-logo-menu .game-launch-card:hover .game-logo-img{transform:perspective(900px) rotateX(5deg) rotateY(-6deg) translateY(-10px) scale(1.08) translateZ(16px);filter:drop-shadow(0 16px 10px rgba(0,0,0,.18)) drop-shadow(0 28px 28px rgba(0,0,0,.28)) saturate(1.08)}
+.game-logo-menu .game-launch-card:active .game-logo-img{transform:perspective(900px) scale(.94) translateY(2px);filter:drop-shadow(0 7px 6px rgba(0,0,0,.2))}
+.game-logo-menu .game-launch-card:focus-visible{outline:3px solid #FFC72C;outline-offset:4px}
+.game-logo-click-ring{position:absolute;inset:18% 18%;border:1px solid rgba(255,199,44,.0);border-radius:50%;transition:.25s;pointer-events:none}
+.game-logo-menu .game-launch-card:hover .game-logo-click-ring{border-color:rgba(255,199,44,.38);box-shadow:0 0 0 10px rgba(255,199,44,.05),0 0 35px rgba(255,199,44,.16)}
+.game-logo-menu .game-card-content{pointer-events:none}
+@media(max-width:640px){.game-logo-menu .game-logo-stage{inset:0 0 34% 0}.game-logo-menu .game-logo-img{width:86%;height:86%}}
+.game-logo-menu .game-launch-card.logo-clicked::before{animation:gameLogoClick .26s ease-out}.game-logo-menu .game-launch-card.logo-clicked .game-logo-click-ring{animation:gameLogoRing .26s ease-out}@keyframes gameLogoClick{50%{filter:brightness(1.12)}}@keyframes gameLogoRing{0%{transform:scale(.82);opacity:.1}55%{transform:scale(1.06);opacity:1}100%{transform:scale(1.15);opacity:0}}
+        /* ============================================================
+           RECEPTIONIST CERTIFICATION MODULE
+           ============================================================ */
+        .cert-hero{position:relative;overflow:hidden;border-radius:1.5rem;background:linear-gradient(135deg,#003d29 0%,#00563B 58%,#087a54 100%);color:#fff;box-shadow:0 18px 45px rgba(0,61,41,.18)}
+        .cert-hero::after{content:"";position:absolute;width:240px;height:240px;border:34px solid rgba(255,199,44,.10);border-radius:50%;right:-80px;top:-95px}
+        .cert-status-card{border:1px solid #e2e8f0;background:#fff;border-radius:1.25rem;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+        .cert-status-card.certified{border-color:rgba(22,163,74,.25);background:linear-gradient(135deg,#fff 0%,#f0fdf4 100%)}
+        .cert-status-card.pending{border-color:rgba(245,158,11,.25);background:linear-gradient(135deg,#fff 0%,#fffbeb 100%)}
+        .cert-badge{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.35rem .7rem;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+        .cert-badge.green{background:#dcfce7;color:#166534}.cert-badge.red{background:#fee2e2;color:#991b1b}.cert-badge.gold{background:#fef3c7;color:#92400e}
+        .cert-mission-shell{background:linear-gradient(145deg,#f8fafc,#eefbf6);border:1px solid #dbe4df;border-radius:1.5rem;box-shadow:0 18px 45px rgba(15,23,42,.08)}
+        .cert-answer{position:relative;width:100%;text-align:left;padding:1rem 1.1rem;border:2px solid #e2e8f0;border-radius:1rem;background:#fff;color:#1e293b;font-weight:700;transition:.18s ease;cursor:pointer}
+        .cert-answer:hover{border-color:#00563B;background:#f0fdf4;transform:translateY(-1px);box-shadow:0 7px 18px rgba(0,86,59,.08)}
+        .cert-answer.selected{border-color:#00563B;background:#ecfdf5;box-shadow:0 0 0 3px rgba(0,86,59,.08)}
+        .cert-answer.correct{border-color:#16a34a;background:#f0fdf4;color:#166534}
+        .cert-answer.wrong{border-color:#dc2626;background:#fef2f2;color:#991b1b}
+        .cert-answer-letter{display:inline-flex;width:2rem;height:2rem;align-items:center;justify-content:center;border-radius:.65rem;background:#f1f5f9;color:#475569;font-size:.78rem;font-weight:900;margin-right:.75rem;flex:0 0 auto}
+        .cert-answer.selected .cert-answer-letter{background:#00563B;color:#fff}
+        .cert-answer.correct .cert-answer-letter{background:#16a34a;color:#fff}
+        .cert-answer.wrong .cert-answer-letter{background:#dc2626;color:#fff}
+        .cert-progress{height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden}.cert-progress-bar{height:100%;background:linear-gradient(90deg,#00563B,#16a34a);border-radius:999px;transition:width .25s ease}
+        .cert-life{font-size:1.1rem;transition:.2s ease}.cert-life.lost{filter:grayscale(1);opacity:.3}
+        .cert-stat{border:1px solid #e2e8f0;border-radius:1rem;background:#fff;padding:.8rem}
+        .cert-certificate{position:relative;overflow:hidden;border:1px solid #d6c27a;border-radius:1.25rem;background:linear-gradient(135deg,#fffdf5,#fff,#f7fff9);box-shadow:0 18px 50px rgba(15,23,42,.10)}
+        .cert-certificate::before{content:"";position:absolute;inset:10px;border:1px solid rgba(0,86,59,.16);border-radius:1rem;pointer-events:none}
+        .cert-seal{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#00563B;color:#FFC72C;border:5px double #FFC72C;box-shadow:0 6px 18px rgba(0,86,59,.2);font-weight:900;font-size:11px;text-align:center}
+        .cert-lock-overlay{border:1px dashed #cbd5e1;border-radius:1rem;background:#f8fafc;padding:1rem}
+        .cert-history-row{display:grid;grid-template-columns:60px 90px 90px 1fr 110px;gap:.5rem;align-items:center}
+        @media(max-width:700px){.cert-history-row{grid-template-columns:repeat(2,minmax(0,1fr));}.cert-history-row>div:first-child{grid-column:1/-1}}
+        .cert-pop{animation:certPop .35s ease both}@keyframes certPop{from{opacity:0;transform:scale(.96) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+        .cert-toast{animation:certToast .25s ease both}@keyframes certToast{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
 </style>
 </head>
 <body class="bg-feu-lightgray font-sans text-slate-800 antialiased">
@@ -544,6 +590,9 @@ body.modal-open{overflow:hidden}
                     </button>
                     <button onclick="showSection('activity')" id="nav-activity" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-feu-darkgreen text-slate-100 transition">
                         <i data-lucide="activity" class="w-5 h-5"></i> Activity Log
+                    </button>
+                    <button onclick="showSection('certification')" id="nav-certification" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-feu-darkgreen text-slate-100 transition">
+                        <i data-lucide="badge-check" class="w-5 h-5"></i> Certification
                     </button>
                     <button onclick="showSection('games')" id="nav-games" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-feu-darkgreen text-slate-100 transition">
                         <i data-lucide="gamepad-2" class="w-5 h-5"></i> Reception Games
@@ -1073,6 +1122,84 @@ body.modal-open{overflow:hidden}
                     </div>
                 </div>
 
+
+                <!-- 10. RECEPTIONIST CERTIFICATION -->
+                <div id="view-certification" class="hidden space-y-6" tabindex="-1" aria-label="Receptionist Certification">
+                    <section class="cert-hero p-6 sm:p-8">
+                        <div class="relative z-10 max-w-3xl">
+                            <div class="flex items-center gap-2 text-feu-gold text-[10px] font-black uppercase tracking-[.18em] mb-3">
+                                <i data-lucide="badge-check" class="w-4 h-4"></i> FEU Alabang Reception Portal
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-black tracking-tight">Receptionist Certification</h2>
+                            <p class="text-sm text-emerald-50/90 mt-2 max-w-2xl">Complete the interactive certification challenge to verify front-desk knowledge and activate receptionist portal access.</p>
+                        </div>
+                    </section>
+
+                    <div id="cert-dashboard" class="space-y-6">
+                        <div id="cert-status-card" class="cert-status-card pending p-5 sm:p-6">
+                            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <span id="cert-status-badge" class="cert-badge gold">Not Certified</span>
+                                        <span id="cert-status-name" class="text-xs font-bold text-slate-500"></span>
+                                    </div>
+                                    <h3 id="cert-status-title" class="text-xl font-black text-slate-800">Certification Required</h3>
+                                    <p id="cert-status-description" class="text-sm text-slate-500 mt-1 max-w-2xl">Every newly registered receptionist must complete this challenge before full receptionist portal access is activated.</p>
+                                </div>
+                                <button id="cert-start-btn" type="button" onclick="startCertificationIdentity()" class="shrink-0 inline-flex items-center justify-center gap-2 bg-feu-green hover:bg-feu-darkgreen text-white font-black px-5 py-3 rounded-xl shadow-md transition">
+                                    <i data-lucide="play" class="w-4 h-4"></i> Start Certification
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="cert-details-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Questions</div><div class="text-xl font-black text-slate-800 mt-1">20</div></div>
+                            <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Passing Score</div><div class="text-xl font-black text-slate-800 mt-1">75%</div></div>
+                            <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Attempts</div><div id="cert-attempt-count" class="text-xl font-black text-slate-800 mt-1">0</div></div>
+                            <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Certification ID</div><div id="cert-id-small" class="text-sm font-black text-slate-800 mt-2 break-all">Not Assigned</div></div>
+                        </div>
+
+                        <div id="cert-certificate-wrap" class="hidden"></div>
+                        <div id="cert-history-wrap" class="hidden"></div>
+                    </div>
+
+                    <div id="cert-identity-panel" class="hidden cert-mission-shell p-5 sm:p-7">
+                        <div class="max-w-xl mx-auto text-center">
+                            <div class="mx-auto w-16 h-16 rounded-2xl bg-feu-green text-feu-gold flex items-center justify-center shadow-lg">
+                                <i data-lucide="id-card" class="w-8 h-8"></i>
+                            </div>
+                            <p class="text-[10px] font-black uppercase tracking-[.18em] text-feu-green mt-5">Certification Identity</p>
+                            <h3 class="text-2xl font-black text-slate-800 mt-1">Enter your full name</h3>
+                            <p class="text-sm text-slate-500 mt-2">This name will appear on your digital FEU Alabang Receptionist certification.</p>
+                            <input id="cert-name-input" type="text" autocomplete="name" placeholder="Full name" class="mt-5 w-full px-4 py-3 rounded-xl border border-slate-300 text-center font-bold focus:ring-2 focus:ring-feu-gold focus:border-feu-green outline-none">
+                            <div class="flex gap-3 mt-4">
+                                <button type="button" onclick="cancelCertificationIdentity()" class="flex-1 px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold">Cancel</button>
+                                <button type="button" onclick="beginCertificationTest()" class="flex-1 px-4 py-3 rounded-xl bg-feu-green hover:bg-feu-darkgreen text-white font-black">Begin Challenge</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cert-test-panel" class="hidden">
+                        <div class="cert-mission-shell p-4 sm:p-6 lg:p-8">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div>
+                                    <div class="text-[10px] font-black uppercase tracking-[.18em] text-feu-green">Receptionist Certification Challenge</div>
+                                    <div id="cert-mission-label" class="text-lg font-black text-slate-800 mt-1">Mission 01 / 20</div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="text-xs font-black text-slate-500">SCORE <span id="cert-live-score" class="text-feu-green">0</span></div>
+                                    <div id="cert-lives" class="flex gap-0.5" aria-label="Lives"><span class="cert-life">❤️</span><span class="cert-life">❤️</span><span class="cert-life">❤️</span></div>
+                                </div>
+                            </div>
+                            <div class="cert-progress mt-4"><div id="cert-progress-bar" class="cert-progress-bar" style="width:5%"></div></div>
+                            <div id="cert-question-card" class="mt-6 cert-pop"></div>
+                            <div id="cert-feedback" class="hidden mt-5"></div>
+                        </div>
+                    </div>
+
+                    <div id="cert-result-panel" class="hidden"></div>
+                </div>
+
                 <!-- 10. RECEPTION ARCADE -->
                 <div id="view-games" class="hidden space-y-6" tabindex="-1" aria-label="Reception Arcade">
                     <section class="arcade-hero">
@@ -1112,7 +1239,7 @@ body.modal-open{overflow:hidden}
                     <div id="game-menu" class="game-selection-grid arcade-game-grid"></div>
                     <div id="game-area" class="hidden arcade-game-shell" aria-live="polite">
                         <div class="arcade-play-top">
-                            <div class="flex items-center gap-3 min-w-0"><img id="game-play-logo" class="game-play-logo" alt="Game logo"><div class="min-w-0"><div id="game-kicker" class="arcade-kicker">LEVEL 01</div><h2 id="game-title" class="arcade-play-title truncate">Game</h2><p id="arcade-instructions" class="arcade-instructions">Ready.</p></div></div>
+                            <div class="flex items-center gap-3 min-w-0"><div class="min-w-0"><div id="game-kicker" class="arcade-kicker">LEVEL 01</div><h2 id="game-title" class="arcade-play-title truncate">Game</h2><p id="arcade-instructions" class="arcade-instructions">Ready.</p></div></div>
                             <div class="arcade-controls">
                                 <button type="button" id="arcade-pause" onclick="toggleArcadePause()" class="arcade-control-btn">⏸ PAUSE</button>
                                 <button type="button" id="arcade-sound" onclick="toggleArcadeSound()" class="arcade-control-btn">🔊 SOUND ON</button>
@@ -1139,7 +1266,7 @@ body.modal-open{overflow:hidden}
                         <div class="arcade-instruction-card">
                             <div class="arcade-instruction-top">
                                 <div class="flex items-center gap-4 min-w-0">
-                                    <img id="arcade-instruction-logo" class="arcade-instruction-logo" alt="">
+                                    
                                     <div class="min-w-0">
                                         <div class="arcade-eyebrow">RECEPTION ARCADE • HOW TO PLAY</div>
                                         <h2 id="arcade-instruction-title" class="arcade-instruction-title">Game Instructions</h2>
@@ -1627,7 +1754,8 @@ body.modal-open{overflow:hidden}
             sidebarNotes: 'reception_sidebar_notes',
             taskStates: 'reception_task_states',
             notebook: 'reception_notebook',
-            manualVisitors: 'reception_manual_visitors'
+            manualVisitors: 'reception_manual_visitors',
+            certification: 'reception_certification_history'
         };
 
         const DIRECTORY = [
@@ -1904,6 +2032,7 @@ Username: ${u.username||''}`;
                 logActivity(`Website signed in: ${user.name}. Manual Time-In remains separate.`);
             }
             refreshAll();
+            setTimeout(()=>showSection(isCertificationRequired(user) ? 'certification' : 'visitors'), 0);
         }
 
         const LOGIN_SECURITY_KEY='reception_login_security';
@@ -1957,7 +2086,7 @@ Username: ${u.username||''}`;
             const passRec = await makeSecretRecord(password);
             const recoveryCode = randomRecoveryCode();
             const recoveryRec = await makeSecretRecord(recoveryCode);
-            const user = { id: empId, name, username, photo: window.pendingRegistrationPhoto || '', passwordHash: passRec.hash, passwordSalt: passRec.salt, recoveryHash: recoveryRec.hash, recoverySalt: recoveryRec.salt };
+            const user = { id: empId, name, username, photo: window.pendingRegistrationPhoto || '', passwordHash: passRec.hash, passwordSalt: passRec.salt, recoveryHash: recoveryRec.hash, recoverySalt: recoveryRec.salt, certificationStatus: 'not-certified', certificationId: '', certificationDate: '', certificationScore: null, certificationName: name };
             window.pendingRegistrationPhoto='';
             users.push(user); saveUsers(users);
             alert(`Account created successfully.\n\nUsername: ${username}\nRecovery Code: ${recoveryCode}\n\nSave the recovery code somewhere secure. It will not be shown again.`);
@@ -2041,18 +2170,18 @@ Username: ${u.username||''}`;
         // SIX RECEPTION GAMES — independent mechanics, 40 scenarios each
         // ================================================================
         const RECEPTION_GAME_QUESTION_COUNT=40;
-        const GAME_TYPES=['snake','cleanup','seatmatch'];
+        const GAME_TYPES=['snake','cleanup','seatmatch','quickshot','puzzle','fivesecond','bell','catcher','mayhem'];
         const GAME_BEST_KEY='reception_game_best_scores_v2';
         const ARCADE_GAMES={
-          snake:{name:'Visitor ID Snake',category:'REFLEX • BLOCKS',desc:'Guide the block-snake to visitor IDs. Eat IDs, never bombs. One bomb ends the round.',icon:'🐛',logo:"assets/arcade-logo-00.webp"},
-          cleanup:{name:'Reception Clean-Up',category:'PUZZLE • TETRIS',desc:'Stack cleaning and waste blocks. Complete rows to clear the reception and earn points.',icon:'🧹',logo:"assets/arcade-logo-01.webp"},
-          seatmatch:{name:'Reception Seat Match',category:'LOGIC • CLASSROOM',desc:'Drag each visitor to the correct reception/classroom seat using the visible seat status.',icon:'🪑',logo:"assets/arcade-logo-02.webp"},
-          quickshot:{name:'Reception Quick Shot',category:'Q&A • SHOOTER',desc:'The only shooting game: aim at the correct answer target and avoid the wrong ones.',icon:'🎯',logo:"assets/arcade-logo-03.webp"},
-          puzzle:{name:'Reception Document Sort',category:'SORT • DRAG',desc:'Sort reception documents into the correct desk tray. No trivia, just fast visual organization.',icon:'🧩',logo:"assets/arcade-logo-04.webp"},
-          fivesecond:{name:'Reception Memory Grid',category:'MEMORY • SPEED',desc:'Memorize the highlighted reception tiles, then reproduce the sequence before time runs out.',icon:'⚡',logo:"assets/arcade-logo-05.webp"},
-          bell:{name:'Reception Bell Rush',category:'REFLEX • REACTION',desc:'Watch the visitor approach, then hit the bell exactly when the prompt turns green.',icon:'🛎️',logo:"assets/arcade-logo-06.webp"},
-          catcher:{name:'Visitor Pass Catcher',category:'CATCH • BASKET',desc:'The only basket game: move the tray to catch visitor passes and paperwork.',icon:'🪪',logo:"assets/arcade-logo-07.webp"},
-          mayhem:{name:'Reception Mayhem — Desk Test',category:'Q&A • 10 ITEMS',desc:'A 10-item reception knowledge test drawn randomly from a 100-question site operations pool.',icon:'🐹',logo:"assets/arcade-logo-08.webp"}
+          snake:{name:'Visitor ID Snake',category:'REFLEX • BLOCKS',desc:'Guide the block-snake to visitor IDs. Eat IDs, never bombs. One bomb ends the round.',icon:'🐛',logo:"assets/game-logos/speed-run.svg"},
+          cleanup:{name:'Reception Clean-Up',category:'PUZZLE • TETRIS',desc:'Stack cleaning and waste blocks. Complete rows to clear the reception and earn points.',icon:'🧹',logo:"assets/game-logos/cleanup.svg"},
+          seatmatch:{name:'Reception Seat Match',category:'LOGIC • CLASSROOM',desc:'Drag each visitor to the correct reception/classroom seat using the visible seat status.',icon:'🪑',logo:"assets/game-logos/seating.svg"},
+          quickshot:{name:'Reception Quick Shot',category:'Q&A • SHOOTER',desc:'The only shooting game: aim at the correct answer target and avoid the wrong ones.',icon:'🎯',logo:"assets/game-logos/rush-hour.svg"},
+          puzzle:{name:'Reception Document Sort',category:'SORT • DRAG',desc:'Sort reception documents into the correct desk tray. No trivia, just fast visual organization.',icon:'🧩',logo:"assets/game-logos/detective.svg"},
+          fivesecond:{name:'Reception Memory Grid',category:'MEMORY • SPEED',desc:'Memorize the highlighted reception tiles, then reproduce the sequence before time runs out.',icon:'⚡',logo:"assets/game-logos/memory.svg"},
+          bell:{name:'Reception Bell Rush',category:'REFLEX • REACTION',desc:'Watch the visitor approach, then hit the bell exactly when the prompt turns green.',icon:'🛎️',logo:"assets/game-logos/social.svg"},
+          catcher:{name:'Visitor Pass Catcher',category:'CATCH • BASKET',desc:'The only basket game: move the tray to catch visitor passes and paperwork.',icon:'🪪',logo:"assets/game-logos/delivery.svg"},
+          mayhem:{name:'Reception Mayhem — Desk Test',category:'Q&A • 10 ITEMS',desc:'A 10-item reception knowledge test drawn randomly from a 100-question site operations pool.',icon:'🐹',logo:"assets/game-logos/survival.svg"}
         };
         const Q_BANK=[{"question":"Which office handles payments made by students or visitors?","correctAnswer":"Cashier","answers":["Accounting Office","Cashier","Admissions","Registrar"],"category":"Reception"},{"question":"Which unit is listed for student account concerns?","correctAnswer":"Student Account","answers":["Cashier","Student Account","Registrar Office","Library"],"category":"Reception"},{"question":"A visitor asks where the Library is located. Which room is listed?","correctAnswer":"201","answers":["206","201","208","1106"],"category":"Reception"},{"question":"Which office is listed in LG201 with local 124?","correctAnswer":"Clinic","answers":["Clinic","Library","Cashier","Control Room"],"category":"Reception"},{"question":"Which office handles admission inquiries?","correctAnswer":"Admission Office","answers":["Registrar Office","Admission Office","Accounting Office","Guidance Unit (GU)"],"category":"Reception"},{"question":"Which office is listed for registrar services?","correctAnswer":"Registrar Office","answers":["Admission Office","Registrar Office","Library","Cashier"],"category":"Reception"},{"question":"Which office is associated with higher education leadership?","correctAnswer":"Senior Director for Higher Education (SDHE)","answers":["Senior Director for Administration","Senior Director for Higher Education (SDHE)","Director General Education","Senior Director for Academic Services (SDAS)"],"category":"Reception"},{"question":"Which listing is associated with finance leadership?","correctAnswer":"Director for Finance","answers":["Director for Finance","Director CCSMA","Executive Director (ED)","Senior Director for Facilities"],"category":"Reception"},{"question":"Which office is listed as Computer Service (ITSO)?","correctAnswer":"Computer Service (ITSO)","answers":["Computer Service (ITSO)","Computer Engineering Department","CCSMA","Control Room"],"category":"Reception"},{"question":"Where is the Guidance Unit listed?","correctAnswer":"1106","answers":["1103","1106","1407","1410"],"category":"Reception"},{"question":"Which unit is abbreviated DU in the directory?","correctAnswer":"Disciplinary Unit (DU)","answers":["Guidance Unit (GU)","Disciplinary Unit (DU)","Student Activity and Development Unit (SADU)","Community Extension Service Unit (CESU)"],"category":"Reception"},{"question":"Which unit is abbreviated SADU?","correctAnswer":"Student Activity and Development Unit (SADU)","answers":["Student Activity and Development Unit (SADU)","Senior Director for Academic Services (SDAS)","Security / Housekeeping Office","Industry Academe Linkage, Alumni, and Placement (IALAP)"],"category":"Reception"},{"question":"Which office handles industry-academe linkage, alumni, and placement?","correctAnswer":"Industry Academe Linkage, Alumni, and Placement (IALAP)","answers":["Community Extension Service Unit (CESU)","Industry Academe Linkage, Alumni, and Placement (IALAP)","Human Resource Associate","Registrar Office"],"category":"Reception"},{"question":"Which office is associated with facilities engineering?","correctAnswer":"Facilities Office Engineers (CE, EE, ME)","answers":["Facilities Office Engineers (CE, EE, ME)","Computer Service (ITSO)","Civil Engineering Department","Security / Housekeeping Office"],"category":"Reception"},{"question":"Which listing is an HR role?","correctAnswer":"Human Resource Associate","answers":["Human Resource Associate","Inventory Associate","Executive Assistant (EA)","Senior Accountant / Accounting Associate"],"category":"Reception"},{"question":"Which listing is the Executive Director?","correctAnswer":"Executive Director (ED)","answers":["Executive Director (ED)","Senior Executive Director (SED)","Director General Education","Director for Finance"],"category":"Reception"},{"question":"Which listing represents Quality Assurance leadership?","correctAnswer":"Senior Director for Quality Assurance (SDQA)","answers":["Senior Director for Quality Assurance (SDQA)","Senior Director for Administration","Senior Director for Facilities","Senior Director for Academic Services (SDAS)"],"category":"Reception"},{"question":"Which room is listed for the Excom Room?","correctAnswer":"1413","answers":["1411","1413","1410","1407"],"category":"Reception"},{"question":"Which room is listed for the Board Room?","correctAnswer":"1413","answers":["1413","1411","1407","1106"],"category":"Reception"},{"question":"Which local is listed for the Clinic?","correctAnswer":"124","answers":["105","112","124","122"],"category":"Reception"},{"question":"Which local is listed for the Cashier?","correctAnswer":"112","answers":["113","112","130","173"],"category":"Reception"},{"question":"Which local is listed for the Director for Finance?","correctAnswer":"173","answers":["130","173","134","168"],"category":"Reception"},{"question":"Which local is listed for the Executive Director (ED)?","correctAnswer":"188","answers":["166","188","168","132"],"category":"Reception"},{"question":"Which local is listed for the Senior Director for Facilities?","correctAnswer":"148","answers":["140","143","144","148"],"category":"Reception"},{"question":"Which room contains the Senior Director for Administration?","correctAnswer":"1410","answers":["1407","1410","1411","1413"],"category":"Reception"},{"question":"Which room contains the Executive Director and Executive Assistant?","correctAnswer":"1411","answers":["1410","1411","1413","1106"],"category":"Reception"},{"question":"Which room contains Guidance Unit, DU, SADU, CESU, and IALAP listings?","correctAnswer":"1106","answers":["1103","1106","1407","1410"],"category":"Reception"},{"question":"Which room contains the Civil Engineering and EEE director listings?","correctAnswer":"503","answers":["502","503","504","605"],"category":"Reception"},{"question":"Which room contains CAB and CCSMA director listings?","correctAnswer":"504","answers":["503","504","605","502"],"category":"Reception"},{"question":"A visitor asks for a local you do not remember. What should you do?","correctAnswer":"Verify the directory first.","answers":["Guess the local.","Verify the directory first.","Send the visitor randomly.","Give a personal number."],"category":"Reception"},{"question":"A visitor provides incomplete information for a required record. What should you do?","correctAnswer":"Ask for the missing information.","answers":["Guess the missing details.","Ask for the missing information.","Submit blank fields.","Delete the record."],"category":"Reception"},{"question":"A delivery arrives without a clear recipient. What is the correct reception action?","correctAnswer":"Clarify the recipient before routing.","answers":["Guess the recipient.","Mark it claimed.","Clarify the recipient before routing.","Hide the package."],"category":"Reception"},{"question":"A delivery has been picked up. What should the log show?","correctAnswer":"Claimed","answers":["Pending","Claimed","Deleted","Unknown"],"category":"Reception"},{"question":"A borrowed key is returned. What should happen to the record?","correctAnswer":"Mark it returned.","answers":["Delete the record.","Mark it returned.","Leave it issued.","Create a new unrelated record."],"category":"Reception"},{"question":"A visitor wants to bypass a required verification step. What should you do?","correctAnswer":"Follow the established verification procedure.","answers":["Allow the bypass.","Follow the established verification procedure.","Ignore the request.","Create a false record."],"category":"Reception"},{"question":"A visitor asks for directions while you are handling a delivery. What is a good response?","correctAnswer":"Acknowledge the visitor, clarify the need, then continue accurately.","answers":["Ignore the visitor.","Guess the destination.","Acknowledge the visitor, clarify the need, then continue accurately.","Delete the delivery record."],"category":"Reception"},{"question":"Which source should you use when you are unsure of a room or local?","correctAnswer":"Campus Room & Extension Directory","answers":["A guess","Campus Room & Extension Directory","A random old note","The game score"],"category":"Reception"},{"question":"What should be recorded when issuing a key?","correctAnswer":"The borrower, time, item, and issued status","answers":["Only the key color","The borrower, time, item, and issued status","Nothing","Only the borrower's first name"],"category":"Reception"},{"question":"What should reception do with a completed visitor record?","correctAnswer":"Keep the record accurate and update its actual status.","answers":["Delete it immediately","Keep the record accurate and update its actual status.","Change details to make it shorter","Leave the status guessed"],"category":"Reception"},{"question":"A staff member asks what happened earlier in the shift. What should you review?","correctAnswer":"Activity Log and handover notes","answers":["Only memory","Activity Log and handover notes","Game scores","The login screen"],"category":"Reception"},{"question":"What room is listed for the Principal?","correctAnswer":"1103","answers":["1103","1106","1410","1411"],"category":"Directory"},{"question":"What local is listed for the Principal's AA?","correctAnswer":"127","answers":["125","127","120","128"],"category":"Directory"},{"question":"What local is listed for the Principal?","correctAnswer":"125","answers":["125","127","120","128"],"category":"Directory"},{"question":"What local is listed for the Human Resource Assistant Director?","correctAnswer":"128","answers":["128","136","145","132"],"category":"Directory"},{"question":"What local is listed for the Human Resource Associate?","correctAnswer":"145","answers":["145","128","140","136"],"category":"Directory"},{"question":"What room is listed for Human Resource roles?","correctAnswer":"1410","answers":["1410","1407","1411","1413"],"category":"Directory"},{"question":"What room is listed for Inventory Associate?","correctAnswer":"1407","answers":["1407","1410","1411","1413"],"category":"Directory"},{"question":"What local is listed for Inventory Associate?","correctAnswer":"140","answers":["140","143","144","148"],"category":"Directory"},{"question":"What local is listed for Facilities Office Engineers?","correctAnswer":"143","answers":["143","140","144","148"],"category":"Directory"},{"question":"What local is listed for Facilities Director?","correctAnswer":"144","answers":["144","143","140","148"],"category":"Directory"},{"question":"What local is listed for Senior Director for Administration?","correctAnswer":"136","answers":["136","128","145","132"],"category":"Directory"},{"question":"What local is listed for Senior Director for Academic Services?","correctAnswer":"120","answers":["120","121","122","123"],"category":"Directory"},{"question":"What local is listed for Guidance Unit?","correctAnswer":"122","answers":["122","121","123","120"],"category":"Directory"},{"question":"What local is listed for SADU?","correctAnswer":"121","answers":["121","122","123","120"],"category":"Directory"},{"question":"What local is listed for IALAP?","correctAnswer":"123","answers":["123","121","122","120"],"category":"Directory"},{"question":"What room is listed for Senior Director for Facilities?","correctAnswer":"1407","answers":["1407","1410","1411","1413"],"category":"Directory"},{"question":"What room is listed for Senior Director for Quality Assurance?","correctAnswer":"1411","answers":["1411","1413","1410","1407"],"category":"Directory"},{"question":"What local is listed for Senior Director for Quality Assurance?","correctAnswer":"132 / 129","answers":["132 / 129","136","148","168"],"category":"Directory"},{"question":"What local is listed for Excom Room?","correctAnswer":"147","answers":["147","148","168","166"],"category":"Directory"},{"question":"What local is listed for SEDA?","correctAnswer":"—","answers":["—","147","168","166"],"category":"Directory"},{"question":"Which office is in LG1 room 100?","correctAnswer":"Reception Admin Building","answers":["Reception Admin Building","Control Room","Bookstore","Clinic"],"category":"Directory"},{"question":"Which room is the Control Room?","correctAnswer":"101","answers":["101","100","102","103"],"category":"Directory"},{"question":"Which room is Security / Housekeeping Office?","correctAnswer":"102","answers":["102","101","103","104"],"category":"Directory"},{"question":"Which room is the Bookstore?","correctAnswer":"103","answers":["103","102","104","105"],"category":"Directory"},{"question":"Which room is the Library?","correctAnswer":"104","answers":["104","105","112","124"],"category":"Directory"},{"question":"Which local is the Library?","correctAnswer":"104","answers":["104","105","112","124"],"category":"Directory"},{"question":"Which room is Chief Librarian?","correctAnswer":"105","answers":["105","104","124","112"],"category":"Directory"},{"question":"Which room is Student Account?","correctAnswer":"113","answers":["113","112","130","173"],"category":"Directory"},{"question":"Which room is Senior Accountant / Accounting Associate?","correctAnswer":"130","answers":["130","173","134","112"],"category":"Directory"},{"question":"Which room is Director for Finance?","correctAnswer":"173","answers":["173","130","134","168"],"category":"Directory"},{"question":"Which room is Admission Office?","correctAnswer":"116 / 108 / 109","answers":["116 / 108 / 109","110 / 107 / 111","124","112"],"category":"Directory"},{"question":"Which local is Admission and External Relations Office Assistant Director?","correctAnswer":"117","answers":["117","116","110","107"],"category":"Directory"},{"question":"Which local is Registrar Director?","correctAnswer":"110","answers":["110","111","107","117"],"category":"Directory"},{"question":"Which room is Senior Director for Higher Education (SDHE)?","correctAnswer":"502","answers":["502","501","503","504"],"category":"Directory"},{"question":"Which local is SDHE?","correctAnswer":"115","answers":["115","137","138","118"],"category":"Directory"},{"question":"Which local is SDHE AA?","correctAnswer":"137","answers":["137","115","138","118"],"category":"Directory"},{"question":"Which room is Director General Education?","correctAnswer":"501","answers":["501","502","503","504"],"category":"Directory"},{"question":"Which local is Director General Education?","correctAnswer":"138","answers":["138","137","135","134"],"category":"Directory"},{"question":"Which local is Director Civil Engineering?","correctAnswer":"118","answers":["118","135","134","119"],"category":"Directory"},{"question":"Which local is Director Electronics / Electrical Engineering?","correctAnswer":"135","answers":["135","118","134","119"],"category":"Directory"},{"question":"Which local is Director College of Accounts & Business?","correctAnswer":"134","answers":["134","119","135","118"],"category":"Directory"},{"question":"Which local is Director CCSMA?","correctAnswer":"119","answers":["119","134","135","118"],"category":"Directory"},{"question":"Which room is Computer Service (ITSO)?","correctAnswer":"605","answers":["605","604","503","504"],"category":"Directory"},{"question":"Which local is Computer Service (ITSO)?","correctAnswer":"142","answers":["142","148","144","140"],"category":"Directory"},{"question":"Which local is Senior Director for Academic Services AA?","correctAnswer":"120","answers":["120","121","122","123"],"category":"Directory"},{"question":"Which room is Board Room?","correctAnswer":"1413","answers":["1413","1411","1410","1407"],"category":"Directory"},{"question":"Which local is Senior Executive Director?","correctAnswer":"168","answers":["168","166","188","132"],"category":"Directory"},{"question":"Which local is Executive Assistant?","correctAnswer":"166","answers":["166","168","188","132"],"category":"Directory"},{"question":"Which local is Executive Director?","correctAnswer":"188","answers":["188","168","166","132"],"category":"Directory"},{"question":"Before entering a visitor into the system, what should reception prioritize?","correctAnswer":"Accurate required information","answers":["Accurate required information","Fast guessing","Skipping verification","Leaving fields blank"],"category":"Operations"},{"question":"If a visitor asks for a room you are unsure about, what is the safest workflow?","correctAnswer":"Check the directory","answers":["Check the directory","Guess from memory","Send them randomly","Use an unrelated number"],"category":"Operations"},{"question":"If a visitor record has a wrong status, what should you do?","correctAnswer":"Update it to the actual status","answers":["Update it to the actual status","Delete the record","Ignore it","Create a duplicate"],"category":"Operations"},{"question":"What should a receptionist do when a delivery recipient is unclear?","correctAnswer":"Clarify the recipient","answers":["Clarify the recipient","Guess the recipient","Hide the parcel","Mark it claimed"],"category":"Operations"},{"question":"When a delivery is picked up, what status should be reflected?","correctAnswer":"Claimed","answers":["Claimed","Pending","Deleted","Unknown"],"category":"Operations"},{"question":"When a borrowed key is returned, what should the record show?","correctAnswer":"Returned","answers":["Returned","Issued","Missing","Deleted"],"category":"Operations"},{"question":"Which log helps review actions taken during a shift?","correctAnswer":"Activity Log","answers":["Activity Log","Game menu","Login artwork","Directory logo"],"category":"Operations"},{"question":"Which section contains shift attendance information?","correctAnswer":"Reception Attendance / Time Sheet","answers":["Reception Attendance / Time Sheet","Reception Arcade","Directory","Emergency Hotline"],"category":"Operations"},{"question":"What is the purpose of the Handover module?","correctAnswer":"Pass important shift information to the next duty","answers":["Pass important shift information to the next duty","Play a game","Change the logo","Reset the browser"],"category":"Operations"},{"question":"What is the purpose of the Room Directory?","correctAnswer":"Find campus rooms and extensions","answers":["Find campus rooms and extensions","Store passwords","Play arcade games","Track personal scores"],"category":"Operations"},{"question":"What is the purpose of Key Tracker?","correctAnswer":"Track issued and returned keys or badges","answers":["Track issued and returned keys or badges","Register students","Store game questions","Edit room artwork"],"category":"Operations"}];function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
         function arcadeScores(){try{return JSON.parse(localStorage.getItem('ves_arcade_scores')||'{}')}catch{return {}}}
@@ -2126,7 +2255,7 @@ Username: ${u.username||''}`;
             if(!ARCADE_GAMES[type])return;
             pendingReceptionGame=type;
             const g=ARCADE_GAMES[type],i=GAME_INSTRUCTIONS[type]||GAME_INSTRUCTIONS.snake;
-            document.getElementById('arcade-instruction-logo').src=g.logo;
+            
             document.getElementById('arcade-instruction-title').textContent=g.name;
             document.getElementById('arcade-instruction-subtitle').textContent='Instructions first • Start only when you are ready.';
             document.getElementById('arcade-instruction-hero').textContent=i.hero;
@@ -2146,14 +2275,16 @@ Username: ${u.username||''}`;
             launchReceptionGame(type);
         }
 
-        function launchReceptionGame(type){if(!ARCADE_GAMES[type])return;try{clearArcadeTimers();const keepSound=arcade.sound;arcade={...arcade,type,running:true,paused:false,score:0,combo:0,maxCombo:0,level:1,lives:3,time:0,duration:0,elapsed:0,best:bestFor(type),raf:0,timer:0,questionDeck:shuffle(Q_BANK),qIndex:0,question:null,entities:[],particles:[],snake:[],food:null,dir:{x:1,y:0},nextDir:{x:1,y:0},player:null,seats:[],visitors:[],drag:null,objects:[],bell:null,chaos:0,cleared:0,visitorsManaged:0,maxChaos:0,reactionTimes:[],sound:keepSound,joystick:{x:0,y:0}};document.getElementById('game-menu').classList.add('hidden');document.getElementById('arcade-results').classList.add('hidden');document.getElementById('game-area').classList.remove('hidden');setArcadeScene(type);document.getElementById('game-title').textContent=ARCADE_GAMES[type].name;document.getElementById('game-play-logo').src=ARCADE_GAMES[type].logo;document.getElementById('game-feedback').classList.add('hidden');document.getElementById('arcade-dom-layer').classList.add('hidden');document.getElementById('arcade-mayhem-joystick').classList.add('hidden');document.getElementById('arcade-touch-hint').classList.add('hidden');document.getElementById('arcade-pause-overlay').classList.add('hidden');updateSoundButton();resizeArcadeCanvas();updateHUD(true);incrementPlayed();if(type==='snake')initSnake();if(type==='cleanup')initCleanup();if(type==='seatmatch')initSeatMatch();if(type==='quickshot')initQuickShot();if(type==='puzzle')initPuzzle();if(type==='fivesecond')initFiveSecond();if(type==='bell')initBell();if(type==='catcher')initCatcher();if(type==='mayhem')initMayhem();playTone(620,.09,'triangle')}catch(err){console.error('Reception Arcade launch error',err);clearArcadeTimers();arcade.running=false;showToast('Game could not start. Please try again.','error');exitReceptionGame()}}
+
+        document.addEventListener('click',function(e){const card=e.target.closest?.('.game-logo-menu .game-launch-card');if(!card)return;card.classList.remove('logo-clicked');void card.offsetWidth;card.classList.add('logo-clicked');setTimeout(()=>card.classList.remove('logo-clicked'),260)});
+        function launchReceptionGame(type){if(!ARCADE_GAMES[type])return;try{clearArcadeTimers();const keepSound=arcade.sound;arcade={...arcade,type,running:true,paused:false,score:0,combo:0,maxCombo:0,level:1,lives:3,time:0,duration:0,elapsed:0,best:bestFor(type),raf:0,timer:0,questionDeck:shuffle(Q_BANK),qIndex:0,question:null,entities:[],particles:[],snake:[],food:null,dir:{x:1,y:0},nextDir:{x:1,y:0},player:null,seats:[],visitors:[],drag:null,objects:[],bell:null,chaos:0,cleared:0,visitorsManaged:0,maxChaos:0,reactionTimes:[],sound:keepSound,joystick:{x:0,y:0}};document.getElementById('game-menu').classList.add('hidden');document.getElementById('arcade-results').classList.add('hidden');document.getElementById('game-area').classList.remove('hidden');setArcadeScene(type);document.getElementById('game-title').textContent=ARCADE_GAMES[type].name;document.getElementById('game-feedback').classList.add('hidden');document.getElementById('arcade-dom-layer').classList.add('hidden');document.getElementById('arcade-mayhem-joystick').classList.add('hidden');document.getElementById('arcade-touch-hint').classList.add('hidden');document.getElementById('arcade-pause-overlay').classList.add('hidden');updateSoundButton();resizeArcadeCanvas();updateHUD(true);incrementPlayed();if(type==='snake')initSnake();if(type==='cleanup')initCleanup();if(type==='seatmatch')initSeatMatch();if(type==='quickshot')initQuickShot();if(type==='puzzle')initPuzzle();if(type==='fivesecond')initFiveSecond();if(type==='bell')initBell();if(type==='catcher')initCatcher();if(type==='mayhem')initMayhem();playTone(620,.09,'triangle')}catch(err){console.error('Reception Arcade launch error',err);clearArcadeTimers();arcade.running=false;showToast('Game could not start. Please try again.','error');exitReceptionGame()}}
         function restartReceptionGame(){if(arcade.type){clearArcadeTimers();arcade.running=false;startReceptionGame(arcade.type)}}
         function exitReceptionGame(){try{clearArcadeTimers();arcade.running=false;closeArcadeInstructions();document.getElementById('game-area')?.classList.remove('arcade-fullscreen-shell');if(document.fullscreenElement)document.exitFullscreen?.();arcade.paused=false;const area=document.getElementById('game-area'),results=document.getElementById('arcade-results'),menu=document.getElementById('game-menu');area?.classList.add('hidden');results?.classList.add('hidden');menu?.classList.remove('hidden');document.getElementById('arcade-dom-layer')?.classList.add('hidden');document.getElementById('arcade-mayhem-joystick')?.classList.add('hidden');document.getElementById('arcade-pause-overlay')?.classList.add('hidden');document.getElementById('arcade-stage')?.style.setProperty('--rx','0deg');document.getElementById('arcade-stage')?.style.setProperty('--ry','0deg');buildArcadeMenu();updateArcadeStats();showSection('games');setTimeout(()=>document.getElementById('game-menu')?.querySelector('[data-reception-game]')?.focus({preventScroll:true}),40)}catch(err){console.error('Arcade exit error',err);showSection('games')}}
         function toggleArcadePause(){if(!arcade.running)return;arcade.paused=!arcade.paused;document.getElementById('arcade-pause-overlay').classList.toggle('hidden',!arcade.paused);document.getElementById('arcade-pause').textContent=arcade.paused?'▶ RESUME':'⏸ PAUSE'}
         function endArcadeGame(){if(!arcade.running)return;arcade.running=false;clearArcadeTimers();const oldBest=bestFor(arcade.type),newBest=Math.max(oldBest,arcade.score);setBest(arcade.type,arcade.score);document.getElementById('game-area').classList.add('hidden');document.getElementById('arcade-results').classList.remove('hidden');document.getElementById('results-title').textContent=arcade.score>oldBest?'NEW BEST!':'GAME COMPLETE!';document.getElementById('results-score').textContent=arcade.score.toLocaleString();document.getElementById('results-best').textContent=newBest.toLocaleString();document.getElementById('results-time').textContent=formatArcadeTime(arcade.elapsed);document.getElementById('results-combo').textContent='x'+arcade.maxCombo;document.getElementById('results-level').textContent=arcade.level;playTone(arcade.score>oldBest?900:480,.18,'triangle');burst(450,250,'#FFC72C',28);updateArcadeStats();buildArcadeMenu()}
         function nextQuestion(){if(!arcade.questionDeck.length){arcade.questionDeck=shuffle(Q_BANK);arcade.qIndex=0}return arcade.questionDeck[arcade.qIndex++]}
         function showFeedback(ok,text){const f=document.getElementById('game-feedback');if(!f)return;f.className='mt-3 p-3 rounded-xl text-xs font-bold '+(ok?'bg-emerald-50 border border-emerald-200 text-emerald-800':'bg-rose-50 border border-rose-200 text-rose-800');f.textContent=text;f.classList.remove('hidden');clearTimeout(showFeedback.t);showFeedback.t=setTimeout(()=>f.classList.add('hidden'),900)}
-        function initSnake(){const c=arcadeCanvas(),n=36,cols=Math.floor(c.width/n),rows=Math.floor(c.height/n);arcade.snake=[{x:4,y:7},{x:3,y:7},{x:2,y:7}];arcade.dir={x:1,y:0};arcade.nextDir={x:1,y:0};arcade.food={x:12,y:7,type:'id'};arcade.bomb={x:18,y:7};arcade.duration=0;document.getElementById('arcade-instructions').textContent='Arrow keys / WASD / swipe. Eat ONLY the white visitor-ID blocks. Touch a bomb and the round ends instantly.';document.getElementById('game-timer').textContent='∞';let last=performance.now();function loop(ts){if(!arcade.running)return;arcade.raf=requestAnimationFrame(loop);if(arcade.paused)return;const speed=Math.max(62,135-arcade.level*6);if(ts-last<speed)return;last=ts;arcade.dir=arcade.nextDir;const h={x:arcade.snake[0].x+arcade.dir.x,y:arcade.snake[0].y+arcade.dir.y};if(h.x<0||h.y<0||h.x>=cols||h.y>=rows||arcade.snake.some((b,i)=>i&&b.x===h.x&&b.y===h.y)){endArcadeGame();return}if(h.x===arcade.bomb.x&&h.y===arcade.bomb.y){endArcadeGame();return}arcade.snake.unshift(h);if(h.x===arcade.food.x&&h.y===arcade.food.y){addScore(100+arcade.level*15);burst(h.x*n+n/2,h.y*n+n/2,'#FFC72C',14);placeSnakeFood(cols,rows);arcade.level=1+Math.floor(arcade.score/500)}else arcade.snake.pop();drawSnake(n);updateHUD()}drawSnake(n)}
+        function initSnake(){const c=arcadeCanvas(),n=36,cols=Math.floor(c.width/n),rows=Math.floor(c.height/n);arcade.snake=[{x:4,y:7},{x:3,y:7},{x:2,y:7}];arcade.dir={x:1,y:0};arcade.nextDir={x:1,y:0};arcade.food={x:12,y:7,type:'id'};arcade.bomb={x:18,y:7};arcade.duration=0;document.getElementById('arcade-instructions').textContent='Arrow keys / WASD / swipe. Eat ONLY the white visitor-ID blocks. Touch a bomb and the round ends instantly.';document.getElementById('game-timer').textContent='∞';let last=performance.now();function loop(ts){if(!arcade.running)return;arcade.raf=requestAnimationFrame(loop);if(arcade.paused)return;const speed=Math.max(62,135-arcade.level*6);if(ts-last<speed)return;last=ts;arcade.dir=arcade.nextDir;const h={x:arcade.snake[0].x+arcade.dir.x,y:arcade.snake[0].y+arcade.dir.y};if(h.x<0||h.y<0||h.x>=cols||h.y>=rows||arcade.snake.some((b,i)=>i&&b.x===h.x&&b.y===h.y)){endArcadeGame();return}if(h.x===arcade.bomb.x&&h.y===arcade.bomb.y){endArcadeGame();return}arcade.snake.unshift(h);if(h.x===arcade.food.x&&h.y===arcade.food.y){addScore(100+arcade.level*15);burst(h.x*n+n/2,h.y*n+n/2,'#FFC72C',14);placeSnakeFood(cols,rows);arcade.level=1+Math.floor(arcade.score/500)}else arcade.snake.pop();drawSnake(n);updateHUD()}drawSnake(n);arcade.raf=requestAnimationFrame(loop)}
         function placeSnakeFood(cols,rows){let tries=0;do{arcade.food={x:Math.floor(Math.random()*cols),y:Math.floor(Math.random()*rows),type:'id'};arcade.bomb={x:Math.floor(Math.random()*cols),y:Math.floor(Math.random()*rows)};tries++}while(tries<60&&(arcade.snake.some(b=>b.x===arcade.food.x&&b.y===arcade.food.y)||arcade.snake.some(b=>b.x===arcade.bomb.x&&b.y===arcade.bomb.y)|| (arcade.food.x===arcade.bomb.x&&arcade.food.y===arcade.bomb.y)))}
         function drawSnake(n){const c=arcadeCanvas(),ctx=arcadeCtx();ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle='#f8fafc';ctx.fillRect(0,0,c.width,c.height);ctx.strokeStyle='#e2e8f0';ctx.lineWidth=1;for(let x=0;x<c.width;x+=n){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,c.height);ctx.stroke()}for(let y=0;y<c.height;y+=n){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(c.width,y);ctx.stroke()}ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#111827';ctx.font='bold 12px sans-serif';ctx.fillText('VISITOR ID SNAKE • WHITE ID BLOCKS ONLY',c.width/2,24);const bx=arcade.bomb.x*n+4,by=arcade.bomb.y*n+4;ctx.fillStyle='#fee2e2';ctx.strokeStyle='#dc2626';ctx.lineWidth=2;ctx.fillRect(bx,by,n-8,n-8);ctx.strokeRect(bx,by,n-8,n-8);ctx.fillStyle='#b91c1c';ctx.font='bold 19px sans-serif';ctx.fillText('✕',bx+n/2,by+n/2);const fx=arcade.food.x*n+4,fy=arcade.food.y*n+4;ctx.fillStyle='#fff';ctx.strokeStyle='#00563B';ctx.lineWidth=2;ctx.fillRect(fx,fy,n-8,n-8);ctx.strokeRect(fx,fy,n-8,n-8);ctx.fillStyle='#00563B';ctx.font='bold 9px sans-serif';ctx.fillText('ID',fx+n/2,fy+n/2);arcade.snake.forEach((b,i)=>{ctx.fillStyle=i?'#0f766e':'#00563B';ctx.fillRect(b.x*n+3,b.y*n+3,n-6,n-6);ctx.strokeStyle='#fff';ctx.strokeRect(b.x*n+3,b.y*n+3,n-6,n-6);if(i===0){ctx.fillStyle='#FFC72C';ctx.font='bold 11px sans-serif';ctx.fillText('YOU',b.x*n+n/2,b.y*n+n/2)}});drawParticles(ctx)}
         function initCleanup(){arcade.duration=120;arcade.cleanup={cols:10,rows:16,grid:Array.from({length:16},()=>Array(10).fill(null)),piece:null,cleaned:0,lastDrop:performance.now()};document.getElementById('arcade-instructions').textContent='Arrow keys: ← → move, ↑ rotate, ↓ soft drop, SPACE hard drop. Cleaning and waste blocks fall. Complete a row to clean it.';spawnCleanupPiece();runTimedLoop(drawCleanup,()=>updateCleanup())}
@@ -2230,8 +2361,354 @@ Username: ${u.username||''}`;
         document.getElementById('arcade-stage')?.addEventListener('pointerleave',()=>{const s=document.getElementById('arcade-stage');s?.style.setProperty('--rx','0deg');s?.style.setProperty('--ry','0deg');const bg=document.getElementById('arcade-scene-bg');if(bg)bg.style.transform='translate3d(0,0,-30px) scale(1.06)'});
         document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('arcade-instruction-modal')&&!document.getElementById('arcade-instruction-modal').classList.contains('hidden')){e.preventDefault();closeArcadeInstructions();return}if(e.key==='Escape'&&arcade.running){e.preventDefault();exitReceptionGame()}});
         
+
+        /* ============================================================
+           RECEPTIONIST CERTIFICATION ENGINE
+           Mandatory for newly registered receptionist accounts.
+           Questions AND answer choices are randomized independently.
+           ============================================================ */
+        const CERT_TOTAL=20, CERT_PASS=15, CERT_MAX_LIVES=3;
+        const CERT_QUESTION_BANK=[
+          {id:'REC001',category:'Visitor Management',q:'A visitor approaches the reception desk. What should you do FIRST?',a:['Greet the visitor and ask how you can assist.','Ask the visitor to wait without explanation.','Leave the desk to find an employee.','Tell the visitor to use the nearest office.'],c:0,e:'A professional greeting and initial assistance should come before directing the visitor anywhere else.'},
+          {id:'REC002',category:'Visitor Management',q:'A visitor says they have an appointment but you cannot immediately find the appointment record. What is the best response?',a:['Verify the visitor’s details and contact the appropriate office before granting access.','Let the visitor enter because they said they have an appointment.','Tell the visitor to leave immediately.','Give the visitor a staff badge while you investigate.'],c:0,e:'Verify the information and coordinate with the appropriate office before granting access.'},
+          {id:'REC003',category:'Visitor Management',q:'What is the main purpose of a visitor check-in record?',a:['To document who entered, when they arrived, and relevant visit details.','To replace all employee attendance records.','To give every visitor unrestricted building access.','To collect unnecessary personal information.'],c:0,e:'Visitor records provide an operational record of arrivals and relevant visit details.'},
+          {id:'REC004',category:'Visitor Management',q:'A visitor is leaving the campus. What should the receptionist do when the system requires visitor check-out?',a:['Record the visitor’s departure using the proper check-out process.','Delete the visitor record.','Leave the visit marked active.','Create a second check-in record.'],c:0,e:'Proper check-out keeps active visitor information accurate.'},
+          {id:'REC005',category:'Visitor Management',q:'Someone asks you to disclose another visitor’s personal information. What should you do?',a:['Protect the information and follow the authorized disclosure procedure.','Read the visitor log aloud.','Send the full visitor list to the requester.','Take a photo of the log and share it.'],c:0,e:'Visitor information should be handled confidentially and disclosed only through authorized procedures.'},
+          {id:'REC006',category:'Professional Conduct',q:'A visitor becomes frustrated and raises their voice. What is the most professional response?',a:['Remain calm, listen, explain what you can do, and escalate appropriately if needed.','Raise your voice so the visitor understands.','Argue until the visitor agrees with you.','Ignore the visitor completely.'],c:0,e:'Calm communication and appropriate escalation are safer and more professional.'},
+          {id:'REC007',category:'Visitor Management',q:'A person claims to be an employee but cannot be verified. What should you do?',a:['Follow the identity or authorization procedure before providing restricted access or information.','Hand over a staff badge.','Give them a restricted key.','Assume they are an employee because they look familiar.'],c:0,e:'Identity and authorization should be verified before restricted access is provided.'},
+          {id:'REC008',category:'Deliveries',q:'A delivery arrives at reception. What should you do?',a:['Follow the delivery receiving procedure and record the required details.','Open every package to inspect its contents.','Leave it unattended.','Give it to the first person who walks by.'],c:0,e:'Deliveries should be handled and documented according to the reception procedure.'},
+          {id:'REC009',category:'Deliveries',q:'A package has an unclear recipient and cannot be safely routed. What is the best action?',a:['Verify the recipient or appropriate office before routing or releasing it.','Guess the recipient.','Open the package without authorization.','Hide the package under the desk.'],c:0,e:'Unclear deliveries should be verified rather than guessed or opened without authorization.'},
+          {id:'REC010',category:'Keys & Badges',q:'Someone requests a restricted key but cannot provide the required authorization. What should you do?',a:['Do not issue the key and follow the authorization/escalation procedure.','Issue it because they seem trustworthy.','Leave the key on the counter.','Give them another restricted key instead.'],c:0,e:'Restricted keys should only be issued through the authorized process.'},
+          {id:'REC011',category:'Keys & Badges',q:'A key or badge is returned to reception. What should be done?',a:['Record the return and secure the item according to procedure.','Put it anywhere on the desk.','Give it to another person immediately.','Delete its previous record.'],c:0,e:'Recording and securing returned access items protects accountability.'},
+          {id:'REC012',category:'Keys & Badges',q:'You discover that a key assigned to reception cannot be located. What should you do?',a:['Report and document the missing item promptly and follow the key-control procedure.','Wait several days to see if it appears.','Mark it as returned.','Make a replacement yourself.'],c:0,e:'Missing access items should be reported and documented promptly.'},
+          {id:'REC013',category:'Timekeeping',q:'Why should manual Time-In and Time-Out records be accurate?',a:['They provide a reliable record of the receptionist’s actual shift attendance.','They are only needed when the computer is broken.','They allow another receptionist to edit your hours.','They replace all other operational logs.'],c:0,e:'Accurate attendance records support reliable shift and staffing records.'},
+          {id:'REC014',category:'Timekeeping',q:'A receptionist is ending their shift. What should happen before leaving?',a:['Complete required handover information and ensure the shift is properly closed.','Leave without telling the next receptionist.','Delete unfinished tasks.','Turn off all records so nobody can see them.'],c:0,e:'A proper shift close includes handover and completion of required records.'},
+          {id:'REC015',category:'Handover',q:'Which information is most useful in a shift handover?',a:['Pending visitors, deliveries, incidents, unfinished tasks, and important follow-ups.','Personal gossip about visitors.','Passwords and private credentials.','Only the receptionist’s favorite tasks.'],c:0,e:'Handover should communicate operational items the next shift needs to continue the work.'},
+          {id:'REC016',category:'Handover',q:'You have an unresolved visitor concern when your shift ends. What should you do?',a:['Document the concern and clearly include it in the handover.','Delete the visitor record.','Leave without mentioning it.','Tell the next receptionist only if they ask.'],c:0,e:'Unresolved operational matters should be documented and clearly handed over.'},
+          {id:'REC017',category:'Emergency',q:'You notice an urgent safety or medical situation at the front desk. What is the best general response?',a:['Stay calm, follow the established emergency procedure, and contact the appropriate responders.','Try to handle every emergency alone.','Ignore it unless someone complains.','Post about it on social media first.'],c:0,e:'Emergency situations require calm action and the established escalation or response procedure.'},
+          {id:'REC018',category:'Emergency',q:'You find an unidentified package that appears suspicious. What should you do?',a:['Do not tamper with it; keep people away as appropriate and follow the established security/emergency procedure.','Open it to find the owner.','Move it around the building.','Put it in a drawer.'],c:0,e:'Potentially suspicious items should not be opened or casually moved; follow security procedures.'},
+          {id:'REC019',category:'Confidentiality',q:'A coworker asks for your portal password so they can finish a task for you. What should you do?',a:['Do not share the password; use the proper account or authorized support process.','Share it privately.','Write it on the reception desk.','Change the password to something simple and share it.'],c:0,e:'Credentials must remain private. Authorized users should use their own access.'},
+          {id:'REC020',category:'System Procedures',q:'The reception portal is temporarily unavailable. What should you do?',a:['Follow the approved contingency/manual procedure and record the information for later entry if required.','Invent new records and hope they sync.','Stop all reception operations immediately.','Delete the day’s paper notes.'],c:0,e:'A controlled contingency process keeps operations and records recoverable during downtime.'},
+          {id:'REC021',category:'Professional Conduct',q:'What should a receptionist do when leaving the desk briefly?',a:['Follow the site’s coverage procedure so the reception function is not unexpectedly unattended.','Leave without telling anyone.','Lock every visitor outside.','Take the visitor log with you.'],c:0,e:'Front-desk coverage and continuity should be maintained when stepping away.'},
+          {id:'REC022',category:'Visitor Management',q:'A visitor asks for directions to an office. What is the best response?',a:['Provide accurate directions using the available directory or assist them appropriately.','Guess the location.','Send them to any office.','Tell them to search the building alone.'],c:0,e:'Use reliable directory information and provide clear assistance.'},
+          {id:'REC023',category:'Professional Conduct',q:'What is an appropriate receptionist communication style?',a:['Polite, clear, calm, professional, and helpful.','Sarcastic and dismissive.','Very informal with confidential details.','Aggressive and argumentative.'],c:0,e:'Reception is a public-facing role where clear and professional communication matters.'},
+          {id:'REC024',category:'System Procedures',q:'Why should an activity log contain accurate descriptions of important actions?',a:['It creates a useful operational and audit trail.','It makes the portal look busier.','It replaces all passwords.','It allows anyone to edit history.'],c:0,e:'Accurate activity logs support continuity, accountability, and review.'},
+          {id:'REC025',category:'System Procedures',q:'A receptionist notices that a task was marked complete by mistake. What should they do?',a:['Correct the task status using the proper system process and ensure the record reflects reality.','Leave the false status forever.','Delete the entire task list.','Change another receptionist’s tasks.'],c:0,e:'Operational records should reflect what actually happened.'},
+          {id:'REC026',category:'Deliveries',q:'A delivery is addressed to a specific office. What is the safest routing approach?',a:['Record the required details and route or notify the intended recipient/office according to procedure.','Leave it in a public hallway.','Give it to a random employee.','Open it to verify the contents.'],c:0,e:'Correct routing protects the delivery and creates accountability.'},
+          {id:'REC027',category:'Keys & Badges',q:'Why is key and badge tracking important?',a:['It provides accountability for controlled access items.','It lets anyone borrow keys freely.','It eliminates the need for security procedures.','It is only for decoration.'],c:0,e:'Access-item tracking helps maintain accountability and security.'},
+          {id:'REC028',category:'Visitor Management',q:'A visitor asks you to bypass the normal check-in process because they are in a hurry. What should you do?',a:['Follow the established check-in procedure and explain the requirement politely.','Skip all records.','Give them a badge without recording it.','Ask another visitor to check them in.'],c:0,e:'Standard procedures should be followed even when a visitor is in a hurry.'},
+          {id:'REC029',category:'Professional Conduct',q:'Which behavior should be avoided while on reception duty?',a:['Using the desk for inappropriate personal activity while visitors are waiting.','Maintaining a clean and organized desk.','Helping visitors politely.','Recording required transactions.'],c:0,e:'Reception duty requires attention to visitors and operational responsibilities.'},
+          {id:'REC030',category:'Handover',q:'A delivery is still waiting for its recipient when your shift is ending. What should you do?',a:['Record its status and include it in the handover for the next shift.','Hide it so the next shift will not see it.','Delete the delivery record.','Assume someone else will notice it.'],c:0,e:'Pending deliveries are exactly the kind of operational item that belongs in a handover.'},
+          {id:'REC031',category:'Confidentiality',q:'You notice confidential information left visible on the reception desk. What should you do?',a:['Secure it appropriately and avoid exposing it to unauthorized people.','Photograph it for your personal records.','Leave it visible.','Read it aloud to nearby visitors.'],c:0,e:'Confidential information should be secured and protected from unnecessary exposure.'},
+          {id:'REC032',category:'Emergency',q:'During an emergency, a visitor asks you for information you are not authorized to provide. What should you do?',a:['Provide only appropriate information and follow the designated emergency communication procedure.','Invent an answer.','Share confidential staff details.','Post the information publicly.'],c:0,e:'Emergency communication still needs to follow the appropriate authority and procedure.'},
+          {id:'REC033',category:'System Procedures',q:'What should you do after completing an important reception transaction in the portal?',a:['Ensure the required record is saved accurately before moving on.','Refresh the browser repeatedly without checking.','Delete the transaction.','Assume it saved without verifying when verification is available.'],c:0,e:'Accurate saved records are important for continuity and auditability.'},
+          {id:'REC034',category:'Visitor Management',q:'A visitor wants access to a restricted area but has no authorization. What should you do?',a:['Do not grant restricted access and contact the appropriate authorized office/person.','Let them enter because they seem friendly.','Give them your own access badge.','Tell them to use another person’s badge.'],c:0,e:'Restricted access requires proper authorization.'},
+          {id:'REC035',category:'Professional Conduct',q:'What is the best way to handle a question when you do not know the answer?',a:['Be honest, use reliable resources or contact the appropriate office, and avoid guessing.','Make up an answer quickly.','Tell the visitor nobody knows.','Ignore the question.'],c:0,e:'Reliable assistance is better than guessing, especially in a professional setting.'},
+          {id:'REC036',category:'Timekeeping',q:'What is the difference between website sign-in and manual Time-In in this portal?',a:['Website sign-in tracks portal access, while manual Time-In records the physical work shift attendance.','They are always the exact same record.','Manual Time-In is only for visitors.','Website sign-in replaces every attendance record.'],c:0,e:'The portal intentionally keeps website access tracking separate from manual shift attendance.'},
+          {id:'REC037',category:'System Procedures',q:'A system setting or contact detail appears incorrect. What should you do?',a:['Use the authorized settings process or report the issue rather than silently changing unrelated records.','Delete the entire settings section.','Change another user’s account.','Ignore it forever.'],c:0,e:'System changes should follow the portal’s authorized settings or support process.'},
+          {id:'REC038',category:'Handover',q:'Which item should NOT be placed in a normal shift handover note?',a:['Another person’s private password or login credential.','A pending delivery.','An unresolved visitor concern.','An unfinished reception task.'],c:0,e:'Passwords and credentials should never be placed in handover notes.'},
+          {id:'REC039',category:'Professional Conduct',q:'A visitor thanks you for helping them. What is an appropriate response?',a:['Respond politely and professionally, such as “You’re welcome.”','Ignore them.','Ask them for a personal favor.','Tell them they owe you something.'],c:0,e:'Professional courtesy helps maintain a welcoming reception environment.'},
+          {id:'REC040',category:'Overall Reception',q:'What is the core responsibility of a receptionist at the front desk?',a:['Provide organized, professional front-desk assistance while maintaining accurate records and following procedures.','Allow everyone unrestricted access.','Only answer personal messages.','Avoid documenting operational activities.'],c:0,e:'The receptionist balances visitor assistance, operational records, communication, and procedure compliance.'}
+        ];
+
+        const certState={active:false,questions:[],index:0,score:0,lives:CERT_MAX_LIVES,selected:null,startedAt:null,identityName:''};
+
+        function getCurrentPortalUser(){
+            const s=getSession();
+            if(!s)return null;
+            return getUsers().find(u=>String(u.id)===String(s.id)) || s;
+        }
+        function isCertificationRequired(user){
+            if(!user || user.demo || String(user.username||'').toLowerCase()==='demo') return false;
+            return String(user.certificationStatus||'').toLowerCase()==='not-certified';
+        }
+        function getCertificationHistory(){
+            const all=readJSON(STORAGE.certification,[]);
+            return Array.isArray(all)?all:[];
+        }
+        function saveCertificationHistory(rows){writeJSON(STORAGE.certification,Array.isArray(rows)?rows:[]);}
+        function certShuffle(arr){
+            const a=Array.isArray(arr)?arr.slice():[];
+            for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+            return a;
+        }
+        function certGenerateId(){
+            const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let id='';
+            do{id='FEU-REC-'+new Date().getFullYear()+'-'+Array.from({length:5},()=>chars[Math.floor(Math.random()*chars.length)]).join('');}
+            while(getUsers().some(u=>u.certificationId===id)||getCertificationHistory().some(x=>x.certificationId===id));
+            return id;
+        }
+        function certPercent(score){return Math.round((score/CERT_TOTAL)*100);}
+        function certFormatDate(iso){
+            if(!iso)return '—';
+            return new Date(iso).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+        }
+        function certEscape(value){return escapeHTML(String(value??''));}
+
+        function renderCertificationDashboard(){
+            const user=getCurrentPortalUser();
+            const card=document.getElementById('cert-status-card');
+            const badge=document.getElementById('cert-status-badge');
+            const title=document.getElementById('cert-status-title');
+            const desc=document.getElementById('cert-status-description');
+            const start=document.getElementById('cert-start-btn');
+            const name=document.getElementById('cert-status-name');
+            const attempts=document.getElementById('cert-attempt-count');
+            const smallId=document.getElementById('cert-id-small');
+            const certWrap=document.getElementById('cert-certificate-wrap');
+            const histWrap=document.getElementById('cert-history-wrap');
+            if(!user)return;
+            const history=getCertificationHistory().filter(x=>String(x.userId||'')===String(user.id));
+            const certified=String(user.certificationStatus||'').toLowerCase()==='certified';
+            name.textContent=user.name?`• ${user.name}`:'';
+            attempts.textContent=history.length;
+            smallId.textContent=user.certificationId||'Not Assigned';
+            card.classList.toggle('certified',certified);card.classList.toggle('pending',!certified);
+            badge.className='cert-badge '+(certified?'green':'gold');
+            badge.textContent=certified?'Certified':'Not Certified';
+            title.textContent=certified?'You are a Certified Receptionist':'Certification Required';
+            desc.textContent=certified
+              ?'Your FEU Alabang Reception Portal certification is active. You may review your certificate and certification history below.'
+              :'Every newly registered receptionist must complete this challenge before full receptionist portal access is activated.';
+            start.innerHTML=certified?'<i data-lucide="award" class="w-4 h-4"></i> View Certificate':'<i data-lucide="play" class="w-4 h-4"></i> Start Certification';
+            start.onclick=certified?()=>document.getElementById('cert-certificate-wrap')?.scrollIntoView({behavior:'smooth',block:'center'}):startCertificationIdentity;
+            certWrap.classList.toggle('hidden',!certified);
+            histWrap.classList.toggle('hidden',history.length===0);
+            if(certified)renderCertificationCertificate(user);
+            if(history.length)renderCertificationHistory(user,history);
+            lucide.createIcons();
+        }
+
+        function startCertificationIdentity(){
+            if(demoGuard('Demo mode is view-only. Certification attempts are not saved.')) return;
+            const user=getCurrentPortalUser();if(!user)return;
+            if(String(user.certificationStatus||'').toLowerCase()==='certified'){
+                document.getElementById('cert-certificate-wrap')?.scrollIntoView({behavior:'smooth',block:'center'});return;
+            }
+            document.getElementById('cert-dashboard').classList.add('hidden');
+            document.getElementById('cert-identity-panel').classList.remove('hidden');
+            const input=document.getElementById('cert-name-input');
+            input.value=user.name||'';
+            input.focus();input.select();
+            lucide.createIcons();
+        }
+        function cancelCertificationIdentity(){
+            document.getElementById('cert-identity-panel')?.classList.add('hidden');
+            document.getElementById('cert-dashboard')?.classList.remove('hidden');
+            renderCertificationDashboard();
+        }
+
+        function beginCertificationTest(){
+            const user=getCurrentPortalUser();if(!user)return;
+            const input=document.getElementById('cert-name-input');
+            const entered=(input?.value||'').trim();
+            if(!entered){showToast('Please enter your full name.','info');input?.focus();return;}
+            if(entered.length<2){showToast('Please enter a valid full name.','info');input?.focus();return;}
+            if(!confirm(`Start the 20-mission certification for "${entered}"?`))return;
+            certState.active=true;
+            certState.questions=certShuffle(CERT_QUESTION_BANK).slice(0,CERT_TOTAL);
+            certState.questions=certState.questions.map(item=>({...item,a:certShuffle(item.a.map((text,index)=>({text,index}))) }));
+            certState.index=0;certState.score=0;certState.lives=CERT_MAX_LIVES;certState.selected=null;certState.startedAt=Date.now();certState.identityName=entered;
+            document.getElementById('cert-identity-panel').classList.add('hidden');
+            document.getElementById('cert-dashboard').classList.add('hidden');
+            document.getElementById('cert-result-panel').classList.add('hidden');
+            document.getElementById('cert-test-panel').classList.remove('hidden');
+            renderCertificationQuestion();
+        }
+
+        function renderCertificationQuestion(){
+            const item=certState.questions[certState.index];
+            if(!item){finishCertification();return;}
+            certState.selected=null;
+            const n=certState.index+1;
+            document.getElementById('cert-mission-label').textContent=`Mission ${String(n).padStart(2,'0')} / ${CERT_TOTAL}`;
+            document.getElementById('cert-live-score').textContent=certState.score;
+            document.getElementById('cert-progress-bar').style.width=`${Math.max(5,(n/CERT_TOTAL)*100)}%`;
+            document.getElementById('cert-feedback').className='hidden mt-5';
+            document.getElementById('cert-feedback').innerHTML='';
+            document.getElementById('cert-lives').innerHTML=Array.from({length:CERT_MAX_LIVES},(_,i)=>`<span class="cert-life ${i>=certState.lives?'lost':''}">❤️</span>`).join('');
+            const card=document.getElementById('cert-question-card');
+            card.className='mt-6 cert-pop';
+            card.innerHTML=`
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="cert-badge green">${certEscape(item.category)}</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Mission ${n}</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black leading-tight text-slate-800">${certEscape(item.q)}</h3>
+              <div class="grid gap-3 mt-6">
+                ${item.a.map((opt,pos)=>`<button type="button" class="cert-answer flex items-center" data-cert-answer="${pos}" onclick="selectCertificationAnswer(${pos})"><span class="cert-answer-letter">${String.fromCharCode(65+pos)}</span><span>${certEscape(opt.text)}</span></button>`).join('')}
+              </div>
+              <div class="flex justify-end mt-5">
+                <button id="cert-submit-answer" type="button" disabled onclick="submitCertificationAnswer()" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-300 text-slate-500 font-black cursor-not-allowed transition">
+                  Submit Answer <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>`;
+            lucide.createIcons();
+        }
+
+        function selectCertificationAnswer(pos){
+            if(!certState.active||certState.selected!==null)return;
+            certState.selected=pos;
+            document.querySelectorAll('#cert-question-card .cert-answer').forEach((el,i)=>el.classList.toggle('selected',i===pos));
+            const btn=document.getElementById('cert-submit-answer');
+            if(btn){btn.disabled=false;btn.className='inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-feu-green hover:bg-feu-darkgreen text-white font-black transition';}
+        }
+
+        function submitCertificationAnswer(){
+            if(!certState.active||certState.selected===null)return;
+            const item=certState.questions[certState.index];
+            const selected=item.a[certState.selected];
+            const correct=selected?.index===item.c;
+            if(correct)certState.score++;
+            else certState.lives=Math.max(0,certState.lives-1);
+            document.querySelectorAll('#cert-question-card .cert-answer').forEach((el,i)=>{
+                const opt=item.a[i];
+                el.disabled=true;
+                if(opt.index===item.c)el.classList.add('correct');
+                else if(i===certState.selected)el.classList.add('wrong');
+            });
+            document.getElementById('cert-live-score').textContent=certState.score;
+            document.getElementById('cert-lives').innerHTML=Array.from({length:CERT_MAX_LIVES},(_,i)=>`<span class="cert-life ${i>=certState.lives?'lost':''}">❤️</span>`).join('');
+            const feedback=document.getElementById('cert-feedback');
+            feedback.className=`mt-5 rounded-xl border p-4 ${correct?'bg-emerald-50 border-emerald-200 text-emerald-800':'bg-rose-50 border-rose-200 text-rose-800'}`;
+            feedback.innerHTML=`<div class="font-black">${correct?'✨ NICE CATCH!':'⚠️ NOT QUITE!'}</div><div class="text-sm mt-1">${certEscape(item.e)}</div><button type="button" onclick="nextCertificationQuestion()" class="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-lg ${correct?'bg-emerald-700':'bg-rose-700'} text-white text-xs font-black">${certState.index+1>=CERT_TOTAL?'Finish Certification':'Next Mission'} <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>`;
+            lucide.createIcons();
+        }
+
+        function nextCertificationQuestion(){
+            if(!certState.active)return;
+            if(certState.index+1>=CERT_TOTAL){finishCertification();return;}
+            certState.index++;
+            renderCertificationQuestion();
+        }
+
+        function finishCertification(){
+            if(!certState.active)return;
+            certState.active=false;
+            const user=getCurrentPortalUser();
+            const percent=certPercent(certState.score);
+            const passed=certState.score>=CERT_PASS;
+            const completedAt=new Date().toISOString();
+            const duration=Math.max(0,Math.round((Date.now()-certState.startedAt)/1000));
+            const attempt=getCertificationHistory().filter(x=>String(x.userId||'')===String(user?.id||'')).length+1;
+            let certificationId=user?.certificationId||'';
+            if(passed&&!certificationId)certificationId=certGenerateId();
+            const record={attempt,userId:user?.id||'',receptionistName:certState.identityName,score:certState.score,total:CERT_TOTAL,percentage:percent,result:passed?'PASSED':'FAILED',certificationStatus:passed?'CERTIFIED':'NOT CERTIFIED',certificationId:passed?certificationId:'',date:completedAt,durationSeconds:duration};
+            const history=getCertificationHistory();history.push(record);saveCertificationHistory(history);
+            if(user&&!isDemoMode()){
+                const users=getUsers(),idx=users.findIndex(u=>String(u.id)===String(user.id));
+                if(idx>=0){
+                    if(passed){
+                        users[idx].certificationStatus='certified';
+                        users[idx].certificationId=certificationId;
+                        users[idx].certificationDate=completedAt;
+                        users[idx].certificationScore=certState.score;
+                        users[idx].certificationName=certState.identityName;
+                    } else {
+                        users[idx].certificationStatus='not-certified';
+                    }
+                    saveUsers(users);
+                    const updated=users[idx];
+                    const session=getSession();
+                    if(session&&String(session.id)===String(updated.id))setSession({...session,certificationStatus:updated.certificationStatus,certificationId:updated.certificationId||''});
+                    logActivity(passed?`Receptionist certification completed: ${updated.name} — ${percent}% (${certificationId}).`:`Receptionist certification attempt ${attempt}: ${updated.name} — ${percent}% (not passed).`);
+                }
+            }
+            document.getElementById('cert-test-panel').classList.add('hidden');
+            const result=document.getElementById('cert-result-panel');
+            result.classList.remove('hidden');
+            result.innerHTML=`
+              <div class="cert-mission-shell p-6 sm:p-8 text-center cert-pop">
+                <div class="mx-auto w-20 h-20 rounded-3xl ${passed?'bg-emerald-100 text-emerald-700':'bg-rose-100 text-rose-700'} flex items-center justify-center text-4xl">${passed?'🏆':'🔴'}</div>
+                <div class="text-[10px] font-black uppercase tracking-[.2em] ${passed?'text-emerald-700':'text-rose-700'} mt-5">${passed?'Certification Complete':'Certification Incomplete'}</div>
+                <h3 class="text-3xl font-black text-slate-800 mt-1">${passed?'You are now certified.':'You did not reach the passing score.'}</h3>
+                <p class="text-sm text-slate-500 mt-2">${certEscape(certState.identityName)}</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-6 text-left">
+                  <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Score</div><div class="text-xl font-black">${certState.score}/${CERT_TOTAL}</div></div>
+                  <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Rating</div><div class="text-xl font-black">${percent}%</div></div>
+                  <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Attempt</div><div class="text-xl font-black">#${attempt}</div></div>
+                  <div class="cert-stat"><div class="text-[10px] font-black uppercase text-slate-400">Status</div><div class="text-xl font-black ${passed?'text-emerald-700':'text-rose-700'}">${passed?'CERTIFIED':'NOT CERTIFIED'}</div></div>
+                </div>
+                ${passed?`<div class="mt-6 text-xs text-slate-500">Certification ID: <span class="font-black text-slate-800">${certEscape(certificationId)}</span></div>`:`<div class="mt-6 text-sm text-slate-600">You need at least <strong>${CERT_PASS}/${CERT_TOTAL}</strong> correct answers (75%) to pass.</div>`}
+                <div class="flex flex-col sm:flex-row gap-3 justify-center mt-7">
+                  ${passed?'<button type="button" onclick="completeCertificationFlow()" class="px-5 py-3 rounded-xl bg-feu-green hover:bg-feu-darkgreen text-white font-black">Enter Reception Portal</button>':'<button type="button" onclick="retryCertification()" class="px-5 py-3 rounded-xl bg-feu-green hover:bg-feu-darkgreen text-white font-black">Retake Certification</button>'}
+                  <button type="button" onclick="returnToCertificationDashboard()" class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold">View Certification</button>
+                </div>
+              </div>`;
+            if(passed)showToast('Certification passed. Reception Portal access is now active.','success');
+            else showToast('Certification not passed. You can review and retake the challenge.','info');
+            certState.questions=[];certState.selected=null;
+            lucide.createIcons();
+        }
+
+        function retryCertification(){
+            document.getElementById('cert-result-panel')?.classList.add('hidden');
+            startCertificationIdentity();
+        }
+        function returnToCertificationDashboard(){
+            document.getElementById('cert-result-panel')?.classList.add('hidden');
+            document.getElementById('cert-dashboard')?.classList.remove('hidden');
+            renderCertificationDashboard();
+        }
+        function completeCertificationFlow(){
+            document.getElementById('cert-result-panel')?.classList.add('hidden');
+            document.getElementById('cert-dashboard')?.classList.remove('hidden');
+            renderCertificationDashboard();
+            showSection('visitors');
+        }
+
+        function renderCertificationCertificate(user){
+            const wrap=document.getElementById('cert-certificate-wrap');if(!wrap)return;
+            const score=Number(user.certificationScore||0),percent=certPercent(score);
+            wrap.innerHTML=`
+              <div class="cert-certificate p-7 sm:p-10">
+                <div class="relative z-10">
+                  <div class="flex items-start justify-between gap-5">
+                    <div><div class="text-[10px] font-black uppercase tracking-[.2em] text-feu-green">FEU Alabang</div><div class="text-xs font-bold text-slate-400 mt-1">Reception Portal</div></div>
+                    <div class="cert-seal">FEU<br>REC<br>CERTIFIED</div>
+                  </div>
+                  <div class="text-center mt-7">
+                    <div class="text-[10px] font-black uppercase tracking-[.22em] text-slate-400">Certificate of</div>
+                    <h3 class="text-2xl sm:text-3xl font-black text-feu-green mt-1">Receptionist Certification</h3>
+                    <p class="text-sm text-slate-500 mt-5">This certifies that</p>
+                    <div class="text-2xl sm:text-3xl font-black text-slate-800 mt-2">${certEscape(user.certificationName||user.name)}</div>
+                    <p class="text-sm text-slate-500 max-w-2xl mx-auto mt-4">has successfully completed the FEU Alabang Receptionist Certification Challenge and is recognized as a certified receptionist within the FEU Alabang Reception Portal.</p>
+                  </div>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-7">
+                    <div class="cert-stat"><div class="text-[9px] font-black uppercase text-slate-400">Score</div><div class="font-black text-slate-800 mt-1">${score}/${CERT_TOTAL}</div></div>
+                    <div class="cert-stat"><div class="text-[9px] font-black uppercase text-slate-400">Rating</div><div class="font-black text-slate-800 mt-1">${percent}%</div></div>
+                    <div class="cert-stat"><div class="text-[9px] font-black uppercase text-slate-400">Certified</div><div class="font-black text-slate-800 mt-1">${certEscape(certFormatDate(user.certificationDate))}</div></div>
+                    <div class="cert-stat"><div class="text-[9px] font-black uppercase text-slate-400">Certification ID</div><div class="font-black text-slate-800 mt-1 break-all">${certEscape(user.certificationId||'—')}</div></div>
+                  </div>
+                  <div class="flex flex-wrap items-center justify-between gap-3 mt-7 pt-5 border-t border-slate-200">
+                    <div class="cert-badge green">✓ Certified Receptionist</div>
+                    <div class="text-[10px] font-bold text-slate-400">FEU Alabang Reception Portal • Certification System</div>
+                  </div>
+                </div>
+              </div>`;
+        }
+
+        function renderCertificationHistory(user,history){
+            const wrap=document.getElementById('cert-history-wrap');if(!wrap)return;
+            const rows=history.slice().reverse();
+            wrap.innerHTML=`
+              <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-200"><h3 class="font-black text-slate-800">Certification History</h3><p class="text-xs text-slate-500 mt-1">Every certification attempt is recorded for this receptionist account.</p></div>
+                <div class="p-4 space-y-2">
+                  <div class="cert-history-row text-[9px] font-black uppercase text-slate-400 px-3"><div>Attempt</div><div>Score</div><div>Rating</div><div>Result</div><div>Date</div></div>
+                  ${rows.map(x=>`<div class="cert-history-row rounded-xl border border-slate-100 bg-slate-50 px-3 py-3 text-xs"><div class="font-black">#${certEscape(x.attempt)}</div><div class="font-bold">${certEscape(x.score)}/${CERT_TOTAL}</div><div class="font-bold">${certEscape(x.percentage)}%</div><div><span class="cert-badge ${x.result==='PASSED'?'green':'red'}">${certEscape(x.result)}</span></div><div class="text-slate-500">${certEscape(certFormatDate(x.date))}</div></div>`).join('')}
+                </div>
+              </div>`;
+        }
+
         function showSection(sectionId) {
-            const sections = ['visitors', 'info', 'time-sheet', 'tasks', 'deliveries', 'doc-db', 'doc-form', 'handover', 'activity', 'games', 'settings'];
+            const currentUser=getCurrentPortalUser();
+            if(sectionId!=='certification' && isCertificationRequired(currentUser) && !isDemoMode()){
+                sectionId='certification';
+                showToast('Certification is required before accessing the receptionist portal.','info');
+            }
+            const sections = ['visitors', 'info', 'time-sheet', 'tasks', 'deliveries', 'doc-db', 'doc-form', 'handover', 'activity', 'certification', 'games', 'settings'];
             const titles = {
                 visitors: '<i data-lucide="layout-dashboard"></i> Reception Dashboard',
                 info: '<i data-lucide="book-open"></i> Campus Room & Extension Directory',
@@ -2242,6 +2719,7 @@ Username: ${u.username||''}`;
                 'doc-form': '<i data-lucide="file-plus"></i> Document Entry Form',
                 handover: '<i data-lucide="sticky-note"></i> Shift Handover Register & Notes',
                 activity: '<i data-lucide="activity"></i> Full System Activity Log & Audit Trail',
+                certification: '<i data-lucide="badge-check"></i> Receptionist Certification',
                 games: '<i data-lucide="gamepad-2"></i> Reception Mini-Games',
                 settings: '<i data-lucide="settings"></i> System Settings & Contacts Manager'
             };
@@ -2254,6 +2732,7 @@ Username: ${u.username||''}`;
             });
             document.getElementById('section-title').innerHTML = titles[sectionId] || '';
             const activeView=document.getElementById(`view-${sectionId}`); if(activeView){activeView.setAttribute('tabindex','-1'); setTimeout(()=>activeView.focus({preventScroll:true}),0);}
+            if(sectionId==='certification'){renderCertificationDashboard();}
             if(sectionId==='games'){buildArcadeMenu();updateArcadeStats();}
 
             if (sectionId === 'activity') renderActivityLogs();
